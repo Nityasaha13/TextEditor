@@ -1,21 +1,30 @@
+var textarea = document.getElementById("inptext");
+var uppercaseButton = document.getElementById("uppercase");
+var lowercaseButton = document.getElementById("lowercase");
+var removespace = document.getElementById("removespace");
+var removenewline = document.getElementById("removenewline");
 
+var chars = document.getElementById("chars");
+var words = document.getElementById("words");
 
-    var textarea = document.getElementById('inptext');
-    var uppercaseButton = document.getElementById('uppercase');
-    var lowercaseButton = document.getElementById('lowercase');
-    var chars = document.getElementById('chars');
-    var words = document.getElementById('words');
+uppercaseButton.addEventListener("click", function () {
+  textarea.value = textarea.value.toUpperCase();
+});
 
-    uppercaseButton.addEventListener('click', function () {
-        textarea.value = textarea.value.toUpperCase();
-    });
+lowercaseButton.addEventListener("click", function () {
+  textarea.value = textarea.value.toLowerCase();
+});
 
-    lowercaseButton.addEventListener('click', function () {
-        textarea.value = textarea.value.toLowerCase();
-    });
+removespace.addEventListener("click", function () {
+    textarea.value = textarea.value.replace(/\s+/g,' ').trim();
+});
 
-    textarea.addEventListener("input", function () {
-        chars.innerText = textarea.value.length;
-        // Split by space to count words
-        words.innerText = textarea.value.trim().split(/\s+/).length;
-    });
+removenewline.addEventListener("click", function () {
+    textarea.value = textarea.value.replace(/\s+/g,'\n').trim();
+});
+
+textarea.addEventListener("input", function () {
+  chars.innerText = textarea.value.length;
+  words.innerText = textarea.value.trim().split(/\s+/).length;
+});
+
